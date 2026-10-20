@@ -1,0 +1,16 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="triaAboutTitle">
+  <title id="triaAboutTitle">7'D( AJ (J&) *9DE #C'/JEJ) TRIA</title>
+  <rect x="20" y="24" width="600" height="432" rx="36" fill="#F6F1FF"/>
+  <rect x="72" y="72" width="496" height="336" rx="28" fill="#FFFFFF" stroke="#E3EAF8"/>
+  <circle cx="196" cy="188" r="48" fill="#F2F6FF"/>
+  <circle cx="196" cy="168" r="22" fill="#14285C"/>
+  <rect x="168" y="196" width="56" height="72" rx="28" fill="#315CF5"/>
+  <rect x="272" y="132" width="248" height="22" rx="11" fill="#14285C"/>
+  <rect x="272" y="168" width="210" height="12" rx="6" fill="#C9D6F5"/>
+  <rect x="272" y="192" width="186" height="12" rx="6" fill="#E3EAF8"/>
+  <rect x="272" y="228" width="88" height="36" rx="18" fill="#315CF5"/>
+  <rect x="372" y="228" width="88" height="36" rx="18" fill="#F2F6FF" stroke="#E3EAF8"/>
+  <rect x="112" y="300" width="416" height="64" rx="16" fill="#F2F6FF"/>
+  <text x="140" y="340" fill="#14285C" font-family="Cairo, Tajawal, sans-serif" font-size="22" font-weight="800">TRIA Academy</text>
+  <text x="330" y="340" fill="#64748B" font-family="Cairo, Tajawal, sans-serif" font-size="16">*9DQE E1F · /9E #C'/JEJ · EG'1'* 1BEJ)</text>
+</svg>

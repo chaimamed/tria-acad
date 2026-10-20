@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://abschool.vercel.app/sitemap.xml
