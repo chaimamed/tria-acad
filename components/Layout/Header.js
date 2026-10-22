@@ -1,265 +1,358 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
-import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
+import {
+  HiOutlineSun,
+  HiOutlineMoon,
+  HiOutlineMenuAlt3,
+  HiOutlineX,
+  HiOutlineHome,
+  HiOutlineBookOpen,
+  HiOutlineDesktopComputer,
+  HiOutlineAcademicCap,
+  HiOutlineUserAdd,
+} from "react-icons/hi";
+import { motion, AnimatePresence } from "framer-motion";
 import BrandMark from "../BrandMark";
 
 const desktopLinks = [
-  { id: "about", label: "الرئيسية" },
-  { id: "services", label: "الدورات" },
-  { id: "digital", label: "المهارات الرقمية" },
-  { id: "about-academy", label: "عن الأكاديمية" },
-  { id: "enroll", label: "التسجيل" },
- 
+  { id: "about", label: "الرئيسية", icon: HiOutlineHome },
+  { id: "services", label: "الدورات", icon: HiOutlineBookOpen },
+  {
+    id: "digital",
+    label: "المهارات الرقمية",
+    icon: HiOutlineDesktopComputer,
+  },
+  {
+    id: "about-academy",
+    label: "عن الأكاديمية",
+    icon: HiOutlineAcademicCap,
+  },
 ];
 
 const Header = () => {
   const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const darkFromStorage = localStorage.getItem("theme") === "dark";
-    setIsDark(darkFromStorage);
-    document.documentElement.classList.toggle("dark", darkFromStorage);
-  }, []);
-  const [activeLink, setActiveLink] = useState(null);
   const [scrollActive, setScrollActive] = useState(false);
+  const [activeLink, setActiveLink] = useState("about");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Initialize theme from localStorage.
+  useEffect(() => {
+    try {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      const dark = savedTheme ? savedTheme === "dark" : prefersDark;
+
+      setIsDark(dark);
+      document.documentElement.classList.toggle("dark", dark);
+    } catch {
+      setIsDark(false);
+    }
+  }, []);
+
+  // Apply theme and save preference.
   const toggleTheme = () => {
     const nextDark = !isDark;
-    document.documentElement.classList.toggle("dark", nextDark);
-    localStorage.setItem("theme", nextDark ? "dark" : "light");
+
     setIsDark(nextDark);
+    document.documentElement.classList.toggle("dark", nextDark);
+
+    try {
+      localStorage.setItem("theme", nextDark ? "dark" : "light");
+    } catch {
+      // Theme still works if storage is unavailable.
+    }
   };
+
+  // Track scrolling and compact the header when needed.
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setScrollActive(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrollActive(window.scrollY > 24);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
     });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  // Close mobile navigation when pressing Escape.
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const handleLinkClick = (id) => {
+    setActiveLink(id);
+    setMobileMenuOpen(false);
+  };
+
+  const scrollProps = {
+    smooth: true,
+    duration: 650,
+    offset: -90,
+  };
+
   return (
     <>
+      {/* Main Header */}
       <header
-        className={
-          "tria-header fixed top-0 w-full z-50 transition-all" +
-          (scrollActive ? " shadow-md pt-0" : " pt-4")
-        }
+        dir="rtl"
+        className={[
+          "tria-header fixed inset-x-0 top-0 z-50",
+          "transition-all duration-300 ease-out",
+          scrollActive ? "is-scrolled" : "",
+        ].join(" ")}
       >
-        <nav className="mx-auto flex max-w-screen-xl items-center justify-between gap-4 border-b px-6 py-3 sm:px-8 lg:px-16">
-          <BrandMark />
-
-          <ul className="hidden items-center lg:flex">
-            {desktopLinks.map((link) => (
-              <li key={link.id}>
-                <LinkScroll
-                  activeClass="active"
-                  to={link.id}
-                  spy={true}
-                  smooth={true}
-                  offset={-88}
-                  duration={800}
-                  onSetActive={() => {
-                    setActiveLink(link.id);
-                  }}
-                  className={
-                    "tria-nav-link mx-1 inline-block cursor-pointer px-3 py-2 text-base font-semibold transition-colors" +
-                    (activeLink === link.id ? " is-active" : "")
-                  }
-                >
-                  {link.label}
-                </LinkScroll>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex items-center justify-end gap-3">
-            <button
-              onClick={toggleTheme}
-              className="tria-theme-btn"
-              aria-label={isDark ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن"}
+        <div className="tria-header-shell mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-10">
+          <nav
+            aria-label="التنقل الرئيسي"
+            className={[
+              "tria-navbar relative flex items-center justify-between gap-4",
+              "transition-all duration-300",
+              scrollActive ? "py-2" : "py-4",
+            ].join(" ")}
+          >
+            {/* Brand */}
+            <div
+              className="tria-brand shrink-0"
+              onClick={() => handleLinkClick("about")}
             >
-              {isDark ? <HiOutlineSun /> : <HiOutlineMoon />}
-            </button>
+              <BrandMark />
+            </div>
 
-            <LinkScroll
-              to="enroll"
-              smooth
-              duration={800}
-              offset={-88}
-              className="tria-btn tria-btn-primary cursor-pointer px-5 py-2 text-sm sm:px-6"
-            >
-              سجّل في دورة
-            </LinkScroll>
-          </div>
-        </nav>
+            {/* Desktop Navigation */}
+            <ul className="tria-desktop-nav hidden items-center gap-1 lg:flex">
+              {desktopLinks.map((link) => {
+                const isActive = activeLink === link.id;
+
+                return (
+                  <li key={link.id} className="relative">
+                    <LinkScroll
+                      {...scrollProps}
+                      to={link.id}
+                      spy
+                      activeClass="active"
+                      onSetActive={() => setActiveLink(link.id)}
+                      className={[
+                        "tria-nav-link relative flex cursor-pointer",
+                        "items-center justify-center gap-2",
+                        "whitespace-nowrap rounded-2xl px-4 py-2.5",
+                        "text-sm font-semibold",
+                        isActive ? "is-active" : "",
+                      ].join(" ")}
+                    >
+                      {link.label}
+
+                      {isActive && (
+                        <motion.span
+                          layoutId="tria-active-indicator"
+                          className="tria-active-indicator"
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30,
+                          }}
+                        />
+                      )}
+                    </LinkScroll>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* Header Actions */}
+            <div className="tria-header-actions flex shrink-0 items-center gap-2 sm:gap-3">
+              {/* Theme Toggle */}
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="tria-icon-btn"
+                aria-label={
+                  isDark ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن"
+                }
+                title={isDark ? "الوضع الفاتح" : "الوضع الداكن"}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={isDark ? "sun" : "moon"}
+                    initial={{ opacity: 0, rotate: -35, scale: 0.7 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 35, scale: 0.7 }}
+                    transition={{ duration: 0.18 }}
+                    className="flex items-center justify-center"
+                  >
+                    {isDark ? (
+                      <HiOutlineSun size={21} />
+                    ) : (
+                      <HiOutlineMoon size={21} />
+                    )}
+                  </motion.span>
+                </AnimatePresence>
+              </button>
+
+              {/* Desktop Registration CTA */}
+              <LinkScroll
+                {...scrollProps}
+                to="enroll"
+                onClick={() => handleLinkClick("enroll")}
+                className="tria-register-btn hidden cursor-pointer items-center justify-center gap-2 sm:inline-flex"
+              >
+                <HiOutlineUserAdd size={19} />
+                <span>سجّل الآن</span>
+              </LinkScroll>
+
+              {/* Mobile Menu Toggle */}
+              <button
+                type="button"
+                className="tria-icon-btn tria-mobile-toggle lg:hidden"
+                onClick={() => setMobileMenuOpen((previous) => !previous)}
+                aria-label={
+                  mobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"
+                }
+                aria-expanded={mobileMenuOpen}
+                aria-controls="tria-mobile-menu"
+              >
+                {mobileMenuOpen ? (
+                  <HiOutlineX size={23} />
+                ) : (
+                  <HiOutlineMenuAlt3 size={23} />
+                )}
+              </button>
+            </div>
+          </nav>
+
+          {/* Mobile Dropdown */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                id="tria-mobile-menu"
+                initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="tria-mobile-menu lg:hidden"
+              >
+                <div className="flex flex-col gap-1 p-3">
+                  {desktopLinks.map((link) => {
+                    const Icon = link.icon;
+                    const isActive = activeLink === link.id;
+
+                    return (
+                      <LinkScroll
+                        key={link.id}
+                        {...scrollProps}
+                        to={link.id}
+                        spy
+                        onSetActive={() => setActiveLink(link.id)}
+                        onClick={() => handleLinkClick(link.id)}
+                        className={[
+                          "tria-mobile-link flex cursor-pointer",
+                          "items-center gap-3 rounded-xl px-4 py-3.5",
+                          "text-sm font-semibold transition-all",
+                          isActive ? "is-active" : "",
+                        ].join(" ")}
+                      >
+                        <Icon size={21} />
+                        <span>{link.label}</span>
+                      </LinkScroll>
+                    );
+                  })}
+
+                  <LinkScroll
+                    {...scrollProps}
+                    to="enroll"
+                    onClick={() => handleLinkClick("enroll")}
+                    className="tria-register-btn mt-2 flex w-full cursor-pointer items-center justify-center gap-2"
+                  >
+                    <HiOutlineUserAdd size={20} />
+                    <span>سجّل في دورة الآن</span>
+                  </LinkScroll>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </header>
-                
-      {/* Mobile Navigation */}
 
-      <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
-        <div className="bg-white-500 sm:px-3">
-          <ul className="flex w-full justify-between items-center text-black-500">
-            <LinkScroll
-              activeClass="active"
-              to="about"
-              spy={true}
-              smooth={true}
-              duration={1000}
-             
-              onSetActive={() => {
-                setActiveLink("about");
-              }}
-              className={
-                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center  text-xs border-t-2 transition-all cursor-pointer " +
-                (activeLink === "about"
-                  ? "  border-[#e76e3e] text-[#e76e3e]"
-                  : " border-transparent")
-              }
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+      {/* Mobile Bottom Navigation */}
+      <nav
+        dir="rtl"
+        aria-label="التنقل السريع"
+        className="tria-bottom-nav fixed inset-x-0 bottom-0 z-40 lg:hidden"
+      >
+        <div className="mx-auto flex max-w-lg items-stretch justify-around px-2">
+          {[
+            {
+              id: "about",
+              label: "الرئيسية",
+              icon: HiOutlineHome,
+            },
+            {
+              id: "services",
+              label: "الدورات",
+              icon: HiOutlineBookOpen,
+            },
+            {
+              id: "digital",
+              label: "المهارات",
+              icon: HiOutlineDesktopComputer,
+            },
+            {
+              id: "about-academy",
+              label: "الأكاديمية",
+              icon: HiOutlineAcademicCap,
+            },
+            {
+              id: "enroll",
+              label: "التسجيل",
+              icon: HiOutlineUserAdd,
+            },
+          ].map((item) => {
+            const Icon = item.icon;
+            const isActive = activeLink === item.id;
+
+            return (
+              <LinkScroll
+                key={item.id}
+                {...scrollProps}
+                to={item.id}
+                spy
+                onSetActive={() => setActiveLink(item.id)}
+                onClick={() => handleLinkClick(item.id)}
+                className={[
+                  "tria-bottom-link relative flex min-w-0 flex-1",
+                  "cursor-pointer flex-col items-center justify-center",
+                  "gap-1 px-1 py-2.5 text-center",
+                  isActive ? "is-active" : "",
+                ].join(" ")}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              Home
-            </LinkScroll>
-            <LinkScroll
-              activeClass="active"
-              to="feature"
-              spy={true}
-              smooth={true}
-              duration={1000}
-              onSetActive={() => {
-                setActiveLink("feature");
-              }}
-              className={
-                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all cursor-pointer " +
-                (activeLink === "feature"
-                  ? "  border-[#e76e3e] text-[#e76e3e]"
-                  : " border-transparent ")
-              }
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                />
-              </svg>
-              Features
-            </LinkScroll>
-            <LinkScroll
-              activeClass="active"
-              to="services"
-              spy={true}
-              smooth={true}
-              duration={1000}
-              onSetActive={() => {
-                setActiveLink("services");
-              }}
-              className={
-                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all cursor-pointer " +
-                (activeLink === "services"
-                  ? "  border-[#e76e3e] text-[#e76e3e]"
-                  : " border-transparent ")
-              }
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              Services
-            </LinkScroll>
-            <LinkScroll
-              activeClass="active"
-              to="events"
-              spy={true}
-              smooth={true}
-              duration={1000}
-              onSetActive={() => {
-                setActiveLink("events");
-              }}
-              className={
-                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all cursor-pointer " +
-                (activeLink === "events"
-                  ? "  border-[#e76e3e] text-[#e76e3e]"
-                  : " border-transparent ")
-              }
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                />
-              </svg>
-               Events
-            </LinkScroll>
-            <LinkScroll
-              activeClass="active"
-              to="contact"
-              spy={true}
-              smooth={true}
-              duration={1000}
-              onSetActive={() => {
-                setActiveLink("contact");
-              }}
-              className={
-                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all cursor-pointer " +
-                (activeLink === "contact"
-                  ? "  border-[#e76e3e] text-[#e76e3e]"
-                  : " border-transparent ")
-              }
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                />
-              </svg>
-            Contact
-            </LinkScroll>
-          </ul>
+                <Icon size={21} strokeWidth={1.8} />
+                <span className="text-[10px] font-semibold sm:text-xs">
+                  {item.label}
+                </span>
+              </LinkScroll>
+            );
+          })}
         </div>
       </nav>
-      {/* End Mobile Navigation */}
     </>
   );
 };
