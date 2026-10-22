@@ -1,95 +1,167 @@
 import React from "react";
 import { Link as LinkScroll } from "react-scroll";
 import { motion } from "framer-motion";
-import { BookOpen, Code2, Laptop, Sparkles } from "lucide-react";
+import { Sparkles, Video, BookOpen, Code2, ArrowLeft, PlayCircle } from "lucide-react";
+import { categories, courses } from "./courses";
+
+// "left"  -> image on the left  (text on the right, RTL default)
+// "right" -> image on the right
+const IMAGE_SIDE = "left";
 
 const chips = ["دعم مدرسي", "برمجة", "لغات", "مهارات رقمية"];
 
+const stats = [
+  { value: `${courses.length}+`, label: "دورة متاحة" },
+  { value: `${categories.length}`, label: "مجالات تعلّم" },
+  { value: "100%", label: "أونلاين" },
+];
+
 const Hero = () => {
+  const imageFirst = IMAGE_SIDE === "right";
+
   return (
     <section id="about" className="tria-section relative overflow-hidden pt-28 sm:pt-32">
-      <div className="tria-orb pointer-events-none -top-10 right-10 h-40 w-40 bg-[#8050F6]" />
-      <div className="tria-orb pointer-events-none bottom-8 left-8 h-48 w-48 bg-[#315CF5]" style={{ animationDelay: "1.4s" }} />
-      <div className="relative mx-auto grid max-w-screen-xl items-center gap-10 px-6 sm:px-8 lg:grid-cols-2 lg:px-16">
+      {/* Background decoration */}
+      <div className="tria-orb pointer-events-none -top-16 right-0 h-56 w-56 bg-[#8050F6]" />
+      <div
+        className="tria-orb pointer-events-none bottom-0 left-0 h-64 w-64 bg-[#315CF5]"
+        style={{ animationDelay: "1.4s" }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage: "radial-gradient(#c9d6f5 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
+          maskImage: "linear-gradient(to bottom, black 30%, transparent 90%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 90%)",
+        }}
+      />
+
+      <div className="relative mx-auto grid max-w-screen-xl items-center gap-12 px-6 sm:px-8 lg:grid-cols-2 lg:gap-8 lg:px-16">
+        {/* ---------- Text ---------- */}
         <motion.div
+          className={imageFirst ? "lg:order-2" : "lg:order-1"}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="tria-kicker">
-            <Sparkles size={16} aria-hidden="true" />
-            أكاديمية TRIA للتعلّم أونلاين
+          <p className="tria-kicker r bg-white  p backdrop-blur dark:border-[#2a365c] dark:bg-[#141c34]/80">
+           
           </p>
-          <h1 className="mb-5 text-3xl font-extrabold leading-snug sm:text-4xl lg:text-5xl">
-            تعلّم اليوم، واصنع{" "}
-            <span className="tria-gradient-text">مستقبلك</span> غداً
+
+          <h1 className="mb-5 text-4xl font-extrabold leading-[1.35] sm:text-5xl lg:text-[3.4rem]">
+            تعلّم اليوم،
+            <br />
+            واصنع <span className="tria-gradient-text">مستقبلك</span> غداً
           </h1>
-          <p className="mb-4 max-w-xl text-base sm:text-lg">
-            مع أكاديمية TRIA، طوّر مستواك الدراسي واكتسب المهارات الرقمية
-            التي تحتاجها، من خلال دروس أونلاين مرنة ومحتوى تعليمي يساعدك
-            على التقدّم بثقة.
+
+          <p className="mb-6 max-w-xl text-base sm:text-lg">
+            دروس دعم مدرسي ومهارات رقمية، تُقدَّم مباشرةً أونلاين في مجموعات صغيرة
+            ومحتوى منظّم يساعدك على التقدّم بثقة وفق مستواك وأهدافك.
           </p>
-          <p className="mb-6 text-sm font-semibold">
-            تعلّم بمرونة، وطوّر مهاراتك، وحقّق أهدافك.
-          </p>
+
           <div className="mb-8 flex flex-wrap gap-2">
             {chips.map((chip) => (
-              <span key={chip} className="tria-btn-secondary rounded-full px-3 py-1 text-xs">
+              <span
+                key={chip}
+                className="tria-btn-secondary rounded-full px-3.5 py-1 text-xs font-semibold"
+              >
                 {chip}
               </span>
             ))}
           </div>
-          <div className="flex flex-wrap gap-3">
+
+          <div className="mb-10 flex flex-wrap gap-3">
             <LinkScroll
               to="enroll"
               smooth
               duration={800}
               offset={-88}
-              className="tria-btn tria-btn-primary cursor-pointer"
+              className="tria-btn tria-btn-primary cursor-pointer px-7"
             >
               سجّل في دورة
+              <ArrowLeft size={18} aria-hidden="true" />
             </LinkScroll>
             <LinkScroll
               to="services"
               smooth
               duration={800}
               offset={-88}
-              className="tria-btn tria-btn-secondary cursor-pointer"
+              className="tria-btn tria-btn-secondary cursor-pointer px-7"
             >
+              <PlayCircle size={18} aria-hidden="true" />
               اكتشف الدورات
             </LinkScroll>
           </div>
+
+          <dl className="grid max-w-md grid-cols-3 gap-4 border-t border-[#E3EAF8] pt-6 dark:border-[#2a365c]">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dt className="text-2xl font-extrabold text-[#14285C] sm:text-3xl">
+                  {s.value}
+                </dt>
+                <dd className="mt-1 text-xs text-[#64748B] sm:text-sm">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
         </motion.div>
 
+        {/* ---------- Image ---------- */}
         <motion.div
-          className="relative"
-          initial={{ opacity: 0, scale: 0.96 }}
+          className={`relative m-0 w-full max-w-xl ${
+            imageFirst ? "lg:order-1" : "lg:order-2"
+          }`}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          <div className="tria-card relative overflow-hidden p-6 sm:p-8">
-            <div className="mb-6 flex items-center justify-between">
-              <strong>TRIA Studio</strong>
-              <span className="rounded-full bg-[#F2F6FF] px-3 py-1 text-xs font-bold text-[#315CF5]">Live</span>
+          {/* gradient blob behind the image */}
+          <div className="absolute -inset-4 -z-10 rotate-3 rounded-[2.5rem] bg-gradient-to-br from-[#315CF5] via-[#8050F6] to-[#c9d6f5] opacity-25 blur-xl" />
+          <div className="absolute -inset-1 -z-10 -rotate-2 rounded-[2.25rem] border border-[#c9d6f5]" />
+
+          <div className="relative overflow-hidden rounded-none border-transparent bg-transparent shadow-[0_30px_60px_-30px_rgba(20,40,92,0.55)]  dark:bg-[#141c34]">
+            <img
+              src="/assets/tria-hero.png"
+              alt="طالب يتعلّم أونلاين مع أكاديمية TRIA"
+              width="720"
+              height="640"
+              className="h-auto w-full object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#14285C]/25 via-transparent to-transparent" />
+          </div>
+
+          {/* floating badges */}
+          <div className="tria-float tria-card absolute -top-5 right-4 flex items-center gap-2 px-4 py-2.5 sm:-right-6">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F2F6FF] text-[#315CF5]">
+              <Video size={18} aria-hidden="true" />
+            </span>
+            <div>
+              <p className="!leading-tight text-sm font-bold !text-[#14285C]">حصص مباشرة</p>
+              <p className="!leading-tight text-xs">مجموعات صغيرة</p>
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div className="tria-float rounded-2xl bg-[#F2F6FF] p-4">
-                <Laptop className="mb-2 text-[#315CF5]" />
-                <p className="text-sm font-bold text-[#14285C]">تعلّم أونلاين</p>
-              </div>
-              <div className="tria-float rounded-2xl bg-[#F6F1FF] p-4" style={{ animationDelay: "0.6s" }}>
-                <BookOpen className="mb-2 text-[#8050F6]" />
-                <p className="text-sm font-bold text-[#14285C]">دعم مدرسي</p>
-              </div>
-              <div className="tria-float rounded-2xl bg-[#F6F1FF] p-4" style={{ animationDelay: "1s" }}>
-                <Code2 className="mb-2 text-[#315CF5]" />
-                <p className="text-sm font-bold text-[#14285C]">برمجة وويب</p>
-              </div>
-              <div className="rounded-2xl bg-[#14285C] p-4 text-white">
-                <p className="text-sm opacity-80">الخطوة التالية</p>
-                <p className="font-bold">سجّل في دورة اليوم</p>
-              </div>
+          </div>
+
+          <div
+            className="tria-float tria-card absolute -bottom-5 left-4 flex items-center gap-2 px-4 py-2.5 sm:-left-6"
+            style={{ animationDelay: "0.8s" }}
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F6F1FF] text-[#8050F6]">
+              <Code2 size={18} aria-hidden="true" />
+            </span>
+            <div>
+              <p className="!leading-tight text-sm font-bold !text-[#14285C]">برمجة وويب</p>
+              <p className="!leading-tight text-xs">مشاريع حقيقية</p>
             </div>
+          </div>
+
+          <div
+            className="tria-float tria-card absolute -left-2 top-1/3 hidden items-center gap-2 px-3 py-2 sm:flex lg:-left-8"
+            style={{ animationDelay: "1.6s" }}
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F2F6FF] text-[#315CF5]">
+              <BookOpen size={16} aria-hidden="true" />
+            </span>
+            <p className="text-sm font-bold !text-[#14285C]">دعم مدرسي</p>
           </div>
         </motion.div>
       </div>

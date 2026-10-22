@@ -332,3 +332,80 @@ html.dark body {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ===================== Dark / light fixes ===================== */
+
+/* White CTA buttons: keep navy text in dark mode */
+html.dark .tria-page .tria-btn.bg-white {
+  color: #14285c !important;
+}
+
+/* Floating badge titles (Hero / About): readable in dark mode */
+html.dark .tria-page .\!text-\[\#14285C\] {
+  color: #f1f5ff !important;
+}
+
+/* No visible scrollbar on the mobile category tabs */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ===================== Footer (light + dark) ===================== */
+.tria-footer {
+  --f-bg: #eef3ff;
+  --f-heading: #14285c;
+  --f-text: #475569;
+  --f-line: #d6e0f5;
+  --f-chip: #ffffff;
+  --f-accent: #315cf5;
+  background: var(--f-bg);
+  border-top: 1px solid var(--f-line);
+}
+
+html.dark .tria-footer {
+  --f-bg: #080e20;
+  --f-heading: #f1f5ff;
+  --f-text: #9aa6c5;
+  --f-line: #243056;
+  --f-chip: #141c34;
+  --f-accent: #8ea6ff;
+}
+
+html .tria-page .tria-footer p { color: var(--f-text); }
+html .tria-page .tria-footer h3 { color: var(--f-heading); }
+
+.tria-footer-link {
+  color: var(--f-text);
+  transition: color 0.2s ease;
+}
+.tria-footer-link:hover { color: var(--f-accent); }
+
+.tria-footer-line { border-color: var(--f-line); }
+.tria-footer-icon { color: var(--f-accent); }
+
+.tria-footer-chip {
+  background: var(--f-chip);
+  border: 1px solid var(--f-line);
+  color: var(--f-heading);
+}
+
+.tria-footer-social {
+  background: var(--f-chip);
+  border: 1px solid var(--f-line);
+  color: var(--f-heading);
+  transition: all 0.2s ease;
+}
+.tria-footer-social:hover {
+  background: #315cf5;
+  border-color: #315cf5;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* CTA band: always dark navy with white text, in both modes */
+.tria-footer-cta {
+  background: linear-gradient(135deg, #14285c 0%, #315cf5 60%, #8050f6 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+html .tria-page .tria-footer .tria-footer-cta h3 { color: #ffffff; }
+html .tria-page .tria-footer .tria-footer-cta p { color: rgba(255, 255, 255, 0.82); }

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Feature from "../components/Feature";
 import Services from "../components/Services";
-import Categories from "../components/Categories";
+
 import WhyChoose from "../components/WhyChoose";
-import Events from "../components/Layout/Events";
+
 import DigitalSkills from "../components/DigitalSkills";
 import About from "../components/About";
 import Values from "../components/Values";
@@ -12,7 +12,6 @@ import Enroll from "../components/Enroll";
 import Layout from "../components/Layout/Layout";
 import SeoHead from "../components/SeoHead";
 import Head from "next/head";
-
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -41,13 +40,13 @@ export default function Home() {
 
       <Layout>
         <Feature />
-        <Categories onSelectCategory={setActiveCategory} />
+        
         <Services
           activeCategory={activeCategory}
           onSelectCourse={setSelectedCourseId}
         />
         <WhyChoose />
-        <Events />
+    
         <DigitalSkills />
         <About />
         <Values />
