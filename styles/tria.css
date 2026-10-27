@@ -1,177 +1,199 @@
-
 /* ==========================================
    TRIA ACADEMY — PREMIUM HEADER
    Blue + Purple | Glassmorphism | Responsive
-   Mobile bottom navbar remains untouched.
+   The mobile bottom navbar is not affected.
    ========================================== */
-  
-   /* PREMIUM HEADER — BLUE & PURPLE */
-   
-   .tria-header {
-     background: transparent;
-     color: #14285c;
-     transition: background 0.3s ease, box-shadow 0.3s ease;
-   }
-   
-   .tria-header nav {
-     border-bottom: 1px solid transparent;
-     transition: border-color 0.3s ease;
-   }
-   
-   /* Glass effect on scroll */
-   .tria-header.is-scrolled {
-     background: rgba(255, 255, 255, 0.88);
-     border-bottom: 1px solid rgba(49, 92, 245, 0.08);
-     box-shadow: 0 8px 35px rgba(20, 40, 92, 0.06);
-     backdrop-filter: blur(22px);
-     -webkit-backdrop-filter: blur(22px);
-   }
-   
-   .tria-header.is-scrolled nav {
-     border-bottom-color: transparent;
-   }
-   
-   /* Navigation links */
-   .tria-header .tria-nav-link {
-     position: relative;
-     color: #64748b;
-     border-radius: 12px;
-     transition: color 0.25s ease, background 0.25s ease;
-   }
-   
-   .tria-header .tria-nav-link:hover {
-     color: #315cf5;
-     background: rgba(49, 92, 245, 0.05);
-   }
-   
-   .tria-header .tria-nav-link.is-active {
-     color: #315cf5;
-     background: linear-gradient(
-       135deg,
-       rgba(49, 92, 245, 0.08),
-       rgba(128, 80, 246, 0.07)
-     );
-   }
-   
-   /* Animated underline */
-   .tria-header .tria-nav-link::after {
-     content: "";
-     position: absolute;
-     bottom: 3px;
-     right: 25%;
-     width: 50%;
-     height: 2px;
-     border-radius: 10px;
-     background: linear-gradient(90deg, #315cf5, #8050f6);
-     transform: scaleX(0);
-     transition: transform 0.25s ease;
-   }
-   
-   .tria-header .tria-nav-link:hover::after,
-   .tria-header .tria-nav-link.is-active::after {
-     transform: scaleX(1);
-   }
-   
-   /* Theme toggle */
-   .tria-header .tria-theme-btn {
-     width: 42px;
-     height: 42px;
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     border-radius: 14px;
-     color: #315cf5;
-     background: #f1f5ff;
-     border: 1px solid #e3eaff;
-     transition: all 0.25s ease;
-   }
-   
-   .tria-header .tria-theme-btn:hover {
-     color: #8050f6;
-     background: #ebe9ff;
-     border-color: #d8d2ff;
-     transform: translateY(-2px);
-   }
-   
-   /* Registration CTA */
-   .tria-header .tria-btn-primary {
-     position: relative;
-     overflow: hidden;
-     color: #fff;
-     background: linear-gradient(120deg, #315cf5, #6255f5, #8050f6);
-     border: 1px solid rgba(255, 255, 255, 0.2);
-     border-radius: 14px;
-     box-shadow: 0 7px 20px rgba(49, 92, 245, 0.18);
-     transition: transform 0.25s ease, box-shadow 0.25s ease;
-   }
-   
-   .tria-header .tria-btn-primary:hover {
-     transform: translateY(-2px);
-     box-shadow: 0 12px 28px rgba(49, 92, 245, 0.25);
-   }
-   
-   /* DARK MODE */
-   html.dark .tria-header {
-     color: #f1f5ff;
-   }
-   
-   html.dark .tria-header.is-scrolled {
-     background: rgba(11, 18, 40, 0.9);
-     border-bottom-color: rgba(142, 166, 255, 0.1);
-     box-shadow: 0 8px 35px rgba(0, 0, 0, 0.2);
-   }
-   
-   html.dark .tria-header .tria-nav-link {
-     color: #a5b4d6;
-   }
-   
-   html.dark .tria-header .tria-nav-link:hover,
-   html.dark .tria-header .tria-nav-link.is-active {
-     color: #a5b4ff;
-     background: rgba(142, 166, 255, 0.09);
-   }
-   
-   html.dark .tria-header .tria-brand-name {
-     color: #f1f5ff;
-   }
-   
-   html.dark .tria-header .tria-theme-btn {
-     color: #b1c0ff;
-     background: #172342;
-     border-color: #29375d;
-   }
-   
-   html.dark .tria-header .tria-theme-btn:hover {
-     background: #222e50;
-   }
-   
-   html.dark .tria-header .tria-btn-primary {
-     background: linear-gradient(120deg, #416bff, #675cf6, #8962f6);
-   }
-   
-   /* Accessibility */
-   .tria-header button:focus-visible,
-   .tria-header a:focus-visible {
-     outline: 3px solid rgba(49, 92, 245, 0.35);
-     outline-offset: 3px;
-   }
-   
-   @media (prefers-reduced-motion: reduce) {
-     .tria-header,
-     .tria-header * {
-       transition: none !important;
-       animation: none !important;
-     }
-   }
-   
 
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .tria-header,
-  .tria-header *,
-  .tria-header *::before,
-  .tria-header *::after {
-    animation: none !important;
-    transition: none !important;
+   .tria-header {
+    background: transparent;
+    color: #14285c;
+    transition: background 0.3s ease, box-shadow 0.3s ease,
+      backdrop-filter 0.3s ease;
   }
+  
+  .tria-header nav {
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Glass effect on scroll */
+  .tria-header.is-scrolled {
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 8px 35px rgba(20, 40, 92, 0.06);
+    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(22px);
+  }
+  
+  .tria-header.is-scrolled nav {
+    border-bottom-color: rgba(49, 92, 245, 0.08);
+  }
+  
+  /* Navigation links */
+  .tria-header .tria-nav-link {
+    position: relative;
+    color: #64748b;
+    border-radius: 12px;
+    transition: color 0.25s ease, background 0.25s ease;
+  }
+  
+  .tria-header .tria-nav-link:hover {
+    color: #315cf5;
+    background: rgba(49, 92, 245, 0.05);
+  }
+  
+  .tria-header .tria-nav-link.is-active {
+    color: #315cf5;
+    background: linear-gradient(
+      135deg,
+      rgba(49, 92, 245, 0.08),
+      rgba(128, 80, 246, 0.07)
+    );
+  }
+  
+  /* Animated underline (centered, works in RTL and LTR) */
+  .tria-header .tria-nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #315cf5, #8050f6);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+  }
+  
+  .tria-header .tria-nav-link:hover::after,
+  .tria-header .tria-nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+  
+  /* Theme toggle */
+  .tria-header .tria-theme-btn {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    color: #315cf5;
+    background: #f1f5ff;
+    border: 1px solid #e3eaff;
+    transition: color 0.25s ease, background 0.25s ease,
+      border-color 0.25s ease, transform 0.25s ease;
+  }
+  
+  .tria-header .tria-theme-btn:hover {
+    color: #8050f6;
+    background: #ebe9ff;
+    border-color: #d8d2ff;
+    transform: translateY(-2px);
+  }
+  
+  /* Registration CTA */
+  .tria-header .tria-btn-primary {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(120deg, #315cf5, #6255f5, #8050f6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    box-shadow: 0 7px 20px rgba(49, 92, 245, 0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .tria-header .tria-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(49, 92, 245, 0.25);
+  }
+  
+  /* ---------- DARK MODE ---------- */
+  html.dark .tria-header {
+    background: transparent;
+    color: #f1f5ff;
+  }
+  
+  html.dark .tria-header.is-scrolled {
+    background: rgba(11, 18, 40, 0.9);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  html.dark .tria-header.is-scrolled nav {
+    border-bottom-color: rgba(142, 166, 255, 0.1);
+  }
+  
+  html.dark .tria-header .tria-nav-link {
+    color: #a5b4d6;
+  }
+  
+  html.dark .tria-header .tria-nav-link:hover,
+  html.dark .tria-header .tria-nav-link.is-active {
+    color: #a5b4ff;
+    background: rgba(142, 166, 255, 0.09);
+  }
+  
+  html.dark .tria-header .tria-brand-name {
+    color: #f1f5ff;
+  }
+  
+  html.dark .tria-header .tria-theme-btn {
+    color: #b1c0ff;
+    background: #172342;
+    border-color: #29375d;
+  }
+  
+  html.dark .tria-header .tria-theme-btn:hover {
+    background: #222e50;
+  }
+  
+  html.dark .tria-header .tria-btn-primary {
+    background: linear-gradient(120deg, #416bff, #675cf6, #8962f6);
+  }
+  
+  /* ---------- Accessibility ---------- */
+  .tria-header button:focus-visible,
+  .tria-header a:focus-visible {
+    outline: 3px solid rgba(49, 92, 245, 0.35);
+    outline-offset: 3px;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .tria-header,
+    .tria-header *,
+    .tria-header *::before,
+    .tria-header *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Force every orb to be a soft round glow, never a square */
+.tria-orb,
+[class*="tria-orb"] {
+  position: absolute;
+  z-index: 0;
+  border-radius: 9999px !important;
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Keep orbs from spilling outside the hero */
+#about {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Hero content above the orbs */
+#about > div:not(.tria-orb) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix the overlapping Arabic heading lines */
+.tria-page h1 {
+  line-height: 1.6;
 }
