@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link as LinkScroll } from "react-scroll";
 import {
   Clock3,
   Layers,
@@ -155,16 +154,13 @@ export default function Feature() {
               <p className="mb-4 !text-white/80">
                 لا تعرف أي دورة تناسبك؟ اكتب لنا مستواك وسنرشدك إلى الاختيار الأنسب.
               </p>
-              <LinkScroll
-                to="enroll"
-                smooth
-                duration={800}
-                offset={-88}
+              <a
+                href="#enroll"
                 className="tria-btn cursor-pointer bg-white px-7 text-[#14285C] hover:bg-[#F2F6FF]"
               >
                 تواصل معنا وسجّل الآن
                 <ArrowLeft size={18} aria-hidden="true" />
-              </LinkScroll>
+              </a>
             </div>
           </div>
         </motion.div>

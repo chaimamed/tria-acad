@@ -1,5 +1,5 @@
 /* ==========================================
-   TRIA ACADEMY — PREMIUM HEADER
+   TRIA Online — PREMIUM HEADER
    Blue + Purple | Glassmorphism | Responsive
    The mobile bottom navbar is not affected.
    ========================================== */
@@ -196,4 +196,1091 @@
 /* Fix the overlapping Arabic heading lines */
 .tria-page h1 {
   line-height: 1.6;
+}
+/* BUTTON */
+:where(.tria-btn) {
+  padding: 0.8rem 1.4rem;
+}
+
+/* SECTION */
+:where(.tria-section) {
+  padding: 4rem 0;
+}
+@media (min-width: 768px) {
+  :where(.tria-section) {
+    padding: 5rem 0;
+  }
+}
+
+/* PARAGRAPH COLOR */
+:where(.tria-page p) {
+  color: #64748b;
+  line-height: 1.85;
+}
+:where(html.dark .tria-page p) {
+  color: #9aa6c5;
+}
+
+/* ---------- Buttons ---------- */
+.tria-btn {
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  min-height: 2.75rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.tria-btn:active {
+  transform: translateY(0);
+}
+
+.tria-btn:disabled,
+.tria-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.tria-footer-browse {
+  color: #fff;
+  background: linear-gradient(120deg, #315cf5, #684ff0);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 24px rgba(49, 92, 245, 0.3);
+  transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.tria-footer-browse:hover {
+  color: #fff;
+  background: linear-gradient(120deg, #416bff, #795cf6);
+  box-shadow: 0 14px 30px rgba(49, 92, 245, 0.4);
+  transform: translateY(-2px);
+}
+
+.tria-footer-browse:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.65);
+  outline-offset: 3px;
+}
+
+/* White button on gradient (FinalCta): keep text readable in dark mode */
+html.dark .tria-page .tria-btn.bg-white,
+html.dark .tria-page .tria-btn.bg-white:hover {
+  color: #14285c !important;
+}
+
+/* Chips are labels, not buttons */
+.tria-chip {
+  display: inline-block;
+  background: #ffffff;
+  color: #14285c;
+  border: 1px solid #e3eaf8;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+}
+html.dark .tria-chip {
+  background: #141c34;
+  color: #e8eeff;
+  border-color: #2a365c;
+}
+
+/* ---------- Form controls ---------- */
+.tria-input,
+.tria-select,
+.tria-textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.tria-input::placeholder,
+.tria-textarea::placeholder {
+  color: #94a3b8;
+}
+
+.tria-textarea {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.tria-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-inline-end: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 1rem center; /* RTL: arrow on the left */
+}
+
+.tria-input:disabled,
+.tria-select:disabled,
+.tria-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tria-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  -webkit-text-fill-color: #172554;
+}
+html.dark .tria-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #0f1730 inset;
+  -webkit-text-fill-color: #e8eeff;
+}
+
+/* ---------- Registration ---------- */
+.tria-auth {
+  --auth-ink: #172554;
+  --auth-muted: #64748b;
+  --auth-accent: #4f46e5;
+  --auth-border: #e2e8f0;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3.5rem);
+  color: var(--auth-ink);
+  direction: ltr;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(119, 96, 255, 0.13), transparent 34rem),
+    radial-gradient(ellipse at 92% 88%, rgba(49, 92, 245, 0.12), transparent 32rem),
+    #f6f8ff;
+}
+
+.tria-auth__card {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.85fr) minmax(0, 1.15fr);
+  width: min(100%, 68rem);
+  min-height: 44rem;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 1.75rem;
+  box-shadow: 0 30px 90px rgba(32, 48, 96, 0.14);
+}
+
+.tria-auth__aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  overflow: hidden;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  color: #fff;
+  background:
+    radial-gradient(circle at 90% 15%, rgba(255, 255, 255, 0.24), transparent 11rem),
+    linear-gradient(145deg, #253fbd 0%, #5545d8 55%, #8050f6 100%);
+}
+
+.tria-auth__aside::after {
+  position: absolute;
+  right: -5rem;
+  bottom: 7rem;
+  width: 18rem;
+  height: 18rem;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2rem rgba(255, 255, 255, 0.035), 0 0 0 4rem rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+}
+
+.tria-auth__brand {
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: fit-content;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.tria-auth__brand img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  padding: 0.3rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0.8rem;
+}
+
+.tria-auth__aside-copy {
+  z-index: 1;
+  max-width: 24rem;
+  margin: 3rem 0;
+}
+
+.tria-auth__eyebrow {
+  display: inline-block;
+  color: #6b63e9;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.tria-auth__aside .tria-auth__eyebrow {
+  color: #d7d4ff;
+}
+
+.tria-auth__aside-copy h1 {
+  margin: 1rem 0;
+  color: #fff;
+  font-size: clamp(2.2rem, 4vw, 3.35rem);
+  font-weight: 750;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.tria-auth__aside-copy p {
+  max-width: 22rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.tria-auth__aside-note {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 22rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.tria-auth__note-mark {
+  display: grid;
+  flex: 0 0 2.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  color: #fff;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.17);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+}
+
+.tria-auth__content {
+  align-self: center;
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.tria-auth__heading {
+  margin-bottom: 1.6rem;
+}
+
+.tria-auth__heading h2 {
+  margin: 0.6rem 0 0.45rem;
+  color: #172554;
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+}
+
+.tria-auth__heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.tria-auth__social {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.tria-auth__social-button {
+  display: inline-flex;
+  min-height: 3.1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.85rem;
+  color: #26324b;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 650;
+  background: #fff;
+  border: 1px solid var(--auth-border);
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.tria-auth__social-button svg {
+  flex: 0 0 auto;
+}
+
+.tria-auth__social-button:hover {
+  background: #f8f9ff;
+  border-color: #c7d2fe;
+  box-shadow: 0 5px 16px rgba(49, 64, 130, 0.08);
+  transform: translateY(-1px);
+}
+
+.tria-auth__social-button:focus-visible,
+.tria-auth__submit:focus-visible,
+.tria-auth__brand:focus-visible,
+.tria-auth__content a:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.35);
+  outline-offset: 3px;
+}
+
+.tria-auth__divider {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.5rem 0;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.tria-auth__divider::before,
+.tria-auth__divider::after {
+  height: 1px;
+  flex: 1;
+  content: "";
+  background: #e8edf5;
+}
+
+.tria-auth__form {
+  display: grid;
+  gap: 1.05rem;
+}
+
+.tria-auth__field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.tria-auth__field label {
+  color: #283650;
+  font-size: 0.84rem;
+  font-weight: 650;
+}
+
+.tria-auth__field input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 0.95rem;
+  color: #172554;
+  font: inherit;
+  font-size: 0.92rem;
+  background: #fbfcff;
+  border: 1px solid #dfe5ef;
+  border-radius: 0.75rem;
+  outline: none;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.tria-auth__field input::placeholder {
+  color: #a0aabd;
+}
+
+.tria-auth__field input:hover {
+  border-color: #bac6dc;
+}
+
+.tria-auth__field input:focus {
+  background: #fff;
+  border-color: #675cf6;
+  box-shadow: 0 0 0 4px rgba(103, 92, 246, 0.12);
+}
+
+.tria-auth__hint {
+  color: #8995aa;
+  font-size: 0.74rem;
+}
+
+.tria-auth__submit {
+  display: flex;
+  min-height: 3.3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 0.45rem;
+  padding: 0.8rem 1.25rem;
+  color: #fff;
+  font: inherit;
+  font-size: 0.98rem;
+  font-weight: 700;
+  background: linear-gradient(110deg, #315cf5, #675cf6 60%, #8050f6);
+  border: 0;
+  border-radius: 0.8rem;
+  box-shadow: 0 9px 22px rgba(79, 70, 229, 0.2);
+  cursor: pointer;
+  transition: box-shadow 180ms ease, filter 180ms ease, transform 180ms ease;
+}
+
+.tria-auth__submit span {
+  font-size: 1.2rem;
+  transition: transform 180ms ease;
+}
+
+.tria-auth__submit:hover {
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.28);
+  filter: saturate(1.12);
+  transform: translateY(-1px);
+}
+
+.tria-auth__submit:hover span {
+  transform: translateX(3px);
+}
+
+.tria-auth__submit:active {
+  transform: translateY(0);
+}
+
+.tria-auth__legal {
+  margin: 1.25rem 0 1.4rem;
+  color: #8995aa;
+  font-size: 0.76rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.tria-auth__legal a,
+.tria-auth__signin a {
+  color: #4f46e5;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.tria-auth__legal a:hover,
+.tria-auth__signin a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tria-auth__signin {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+html.dark .tria-auth {
+  --auth-ink: #edf2ff;
+  --auth-muted: #a5b4d6;
+  --auth-border: #34415f;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(119, 96, 255, 0.13), transparent 34rem),
+    radial-gradient(ellipse at 92% 88%, rgba(49, 92, 245, 0.12), transparent 32rem),
+    #0d1428;
+}
+
+html.dark .tria-auth__card {
+  background: #131d35;
+  border-color: #283653;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
+}
+
+html.dark .tria-auth__heading h2,
+html.dark .tria-auth__field label {
+  color: #edf2ff;
+}
+
+html.dark .tria-auth__heading p,
+html.dark .tria-auth__signin {
+  color: #a5b4d6;
+}
+
+html.dark .tria-auth__social-button {
+  color: #e8eeff;
+  background: #182440;
+  border-color: #34415f;
+}
+
+html.dark .tria-auth__social-button:hover {
+  background: #202d4d;
+  border-color: #5366a0;
+}
+
+html.dark .tria-auth__divider::before,
+html.dark .tria-auth__divider::after {
+  background: #34415f;
+}
+
+html.dark .tria-auth__field input {
+  color: #edf2ff;
+  background: #101a31;
+  border-color: #34415f;
+}
+
+html.dark .tria-auth__field input::placeholder,
+html.dark .tria-auth__hint,
+html.dark .tria-auth__legal {
+  color: #97a5c2;
+}
+
+html.dark .tria-auth__field input:focus {
+  background: #131f3a;
+}
+
+@media (max-width: 760px) {
+  .tria-auth {
+    padding: 1rem;
+  }
+
+  .tria-auth__card {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+    min-height: 0;
+    border-radius: 1.35rem;
+  }
+
+  .tria-auth__aside {
+    min-height: auto;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .tria-auth__aside-copy {
+    margin: 0;
+  }
+
+  .tria-auth__aside-copy h1 {
+    max-width: 25rem;
+    margin: 0.6rem 0 0.5rem;
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .tria-auth__aside-copy p {
+    max-width: 31rem;
+    font-size: 0.9rem;
+  }
+
+  .tria-auth__aside-note {
+    display: none;
+  }
+
+  .tria-auth__content {
+    padding: 1.75rem clamp(1.25rem, 6vw, 2.25rem) 2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .tria-auth__social {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tria-auth *,
+  .tria-auth *::before,
+  .tria-auth *::after {
+    transition: none !important;
+  }
+}
+
+/* ---------- Enrollment form ---------- */
+.tria-enroll-form {
+  color: #14285c;
+  background: #fff;
+  border: 1px solid #e3eaf8;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 55px rgba(20, 40, 92, 0.1);
+}
+
+.tria-enroll-form .tria-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #263a68;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.tria-enroll-form .tria-input,
+.tria-enroll-form .tria-select,
+.tria-enroll-form .tria-textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  color: #14285c;
+  background-color: #f8faff;
+  border: 1px solid #dce5f4;
+  border-radius: 0.8rem;
+  outline: none;
+  transition: background-color 180ms ease, border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.tria-enroll-form .tria-input,
+.tria-enroll-form .tria-select {
+  min-height: 3.25rem;
+}
+
+.tria-enroll-form .tria-textarea {
+  min-height: 8rem;
+  line-height: 1.7;
+}
+
+.tria-enroll-form .tria-input::placeholder,
+.tria-enroll-form .tria-textarea::placeholder {
+  color: #8b98b0;
+  opacity: 1;
+}
+
+.tria-enroll-form .tria-input:hover,
+.tria-enroll-form .tria-select:hover,
+.tria-enroll-form .tria-textarea:hover {
+  border-color: #aabbe0;
+}
+
+.tria-enroll-form .tria-input:focus,
+.tria-enroll-form .tria-select:focus,
+.tria-enroll-form .tria-textarea:focus {
+  background-color: #fff;
+  border-color: #526cf5;
+  box-shadow: 0 0 0 4px rgba(49, 92, 245, 0.13);
+}
+
+.tria-btn-primary {
+  display: inline-flex;
+  min-height: 2.9rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.4rem;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(110deg, #315cf5, #675cf6 60%, #8050f6);
+  border: 1px solid transparent;
+  border-radius: 0.85rem;
+  box-shadow: 0 8px 20px rgba(49, 92, 245, 0.2);
+  transition: box-shadow 180ms ease, filter 180ms ease, transform 180ms ease;
+}
+
+.tria-btn-primary:hover:not(:disabled):not([aria-disabled="true"]) {
+  color: #fff;
+  filter: saturate(1.1);
+  box-shadow: 0 11px 26px rgba(49, 92, 245, 0.28);
+  transform: translateY(-1px);
+}
+
+.tria-btn-primary:focus-visible {
+  outline: 3px solid rgba(49, 92, 245, 0.35);
+  outline-offset: 3px;
+}
+
+.tria-btn-primary:disabled,
+.tria-btn-primary[aria-disabled="true"] {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+html.dark .tria-enroll-form {
+  color: #e8eeff;
+  background: #131d35;
+  border-color: #283653;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
+}
+
+html.dark .tria-enroll-form .tria-label {
+  color: #d7e0f5;
+}
+
+html.dark .tria-enroll-form .tria-input,
+html.dark .tria-enroll-form .tria-select,
+html.dark .tria-enroll-form .tria-textarea {
+  color: #edf2ff;
+  background-color: #101a31;
+  border-color: #34415f;
+}
+
+html.dark .tria-enroll-form .tria-input::placeholder,
+html.dark .tria-enroll-form .tria-textarea::placeholder {
+  color: #97a5c2;
+}
+
+html.dark .tria-enroll-form .tria-input:focus,
+html.dark .tria-enroll-form .tria-select:focus,
+html.dark .tria-enroll-form .tria-textarea:focus {
+  background-color: #131f3a;
+  border-color: #7d8fff;
+}
+
+@media (max-width: 480px) {
+  .tria-enroll-form {
+    border-radius: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tria-enroll-form *,
+  .tria-btn-primary {
+    transition: none !important;
+  }
+}
+
+/* ---------- Shared homepage components ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+.tria-page {
+  min-width: 0;
+  overflow: clip;
+  color: #172554;
+  background: #fff;
+}
+
+.tria-page h1,
+.tria-page h2,
+.tria-page h3,
+.tria-page h4 {
+  color: #14285c;
+}
+
+.tria-page footer h2,
+.tria-page footer h3 {
+  color: #fff;
+}
+
+#digital h2 {
+  color: #fff;
+}
+
+.tria-page h1 {
+  line-height: 1.35;
+}
+
+.tria-surface {
+  background: #f7f9ff;
+}
+
+.tria-card {
+  color: #172554;
+  background: #fff;
+  border: 1px solid #e3eaf8;
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 35px rgba(20, 40, 92, 0.07);
+}
+
+.tria-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.85rem;
+  color: #5264d8;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.tria-title {
+  margin: 0 0 1rem;
+  color: #14285c;
+  font-size: clamp(1.8rem, 3.2vw, 2.65rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.45;
+}
+
+.tria-lead {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.tria-gradient-text {
+  color: #5264f5;
+  background: linear-gradient(110deg, #315cf5, #8050f6);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tria-btn-secondary {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1rem;
+  color: #315cf5;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #dce5f4;
+  border-radius: 0.85rem;
+  transition: color 180ms ease, background-color 180ms ease,
+    border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.tria-btn-secondary:hover {
+  color: #263fca;
+  background: #f5f7ff;
+  border-color: #9eafff;
+  box-shadow: 0 5px 16px rgba(49, 92, 245, 0.1);
+}
+
+.tria-btn-secondary:focus-visible,
+.tria-btn:focus-visible {
+  outline: 3px solid rgba(49, 92, 245, 0.35);
+  outline-offset: 3px;
+}
+
+/* ---------- Header and navigation ---------- */
+.tria-header {
+  color: #14285c;
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.tria-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 30px rgba(20, 40, 92, 0.1);
+}
+
+.tria-navbar {
+  min-height: 4.5rem;
+}
+
+.tria-desktop-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tria-header .tria-nav-link {
+  color: #52617b;
+  text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.tria-header .tria-nav-link:hover,
+.tria-header .tria-nav-link.is-active {
+  color: #315cf5;
+  background: #f1f4ff;
+}
+
+.tria-header .tria-nav-link::after {
+  display: none;
+}
+
+.tria-icon-btn {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: #315cf5;
+  background: #f1f5ff;
+  border: 1px solid #e3eaff;
+  border-radius: 0.85rem;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease,
+    border-color 180ms ease, transform 180ms ease;
+}
+
+.tria-icon-btn:hover {
+  color: #8050f6;
+  background: #ebe9ff;
+  border-color: #d8d2ff;
+  transform: translateY(-1px);
+}
+
+.tria-register-btn {
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  background: linear-gradient(110deg, #315cf5, #675cf6 60%, #8050f6);
+  border: 1px solid transparent;
+  border-radius: 0.85rem;
+  box-shadow: 0 7px 20px rgba(49, 92, 245, 0.18);
+  transition: box-shadow 180ms ease, filter 180ms ease, transform 180ms ease;
+}
+
+.tria-register-btn:hover {
+  color: #fff;
+  filter: saturate(1.1);
+  box-shadow: 0 11px 26px rgba(49, 92, 245, 0.27);
+  transform: translateY(-1px);
+}
+
+.tria-mobile-menu {
+  position: absolute;
+  top: calc(100% - 0.25rem);
+  right: 1rem;
+  left: 1rem;
+  z-index: 51;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e3eaf8;
+  border-radius: 1.1rem;
+  box-shadow: 0 16px 40px rgba(20, 40, 92, 0.16);
+}
+
+.tria-mobile-link {
+  color: #52617b;
+  text-decoration: none;
+}
+
+.tria-mobile-link:hover,
+.tria-mobile-link.is-active {
+  color: #315cf5;
+  background: #f1f4ff;
+}
+
+.tria-bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1px solid #e3eaf8;
+  box-shadow: 0 -8px 24px rgba(20, 40, 92, 0.08);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.tria-bottom-link {
+  min-height: 3.9rem;
+  color: #74819a;
+  text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.tria-bottom-link:hover,
+.tria-bottom-link.is-active {
+  color: #315cf5;
+}
+
+.tria-bottom-link.is-active::before {
+  position: absolute;
+  top: 0;
+  right: 25%;
+  left: 25%;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, #315cf5, #8050f6);
+  border-radius: 0 0 2px 2px;
+}
+
+html.dark .tria-page {
+  color: #e8eeff;
+  background: #0d1428;
+}
+
+html.dark .tria-page h1,
+html.dark .tria-page h2,
+html.dark .tria-page h3,
+html.dark .tria-page h4 {
+  color: #edf2ff;
+}
+
+html.dark .tria-surface {
+  background: #111a31;
+}
+
+html.dark .tria-card {
+  color: #e8eeff;
+  background: #131d35;
+  border-color: #283653;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+html.dark .tria-title,
+html.dark .tria-lead {
+  color: #d7e0f5;
+}
+
+html.dark .tria-btn-secondary {
+  color: #c4d0ff;
+  background: #172342;
+  border-color: #34415f;
+}
+
+html.dark .tria-btn-secondary:hover {
+  color: #fff;
+  background: #202d4d;
+  border-color: #5366a0;
+}
+
+html.dark .tria-header,
+html.dark .tria-header.is-scrolled,
+html.dark .tria-mobile-menu {
+  color: #edf2ff;
+  background: rgba(13, 20, 40, 0.96);
+  border-color: #283653;
+}
+
+html.dark .tria-header .tria-nav-link,
+html.dark .tria-mobile-link {
+  color: #a5b4d6;
+}
+
+html.dark .tria-header .tria-nav-link:hover,
+html.dark .tria-header .tria-nav-link.is-active,
+html.dark .tria-mobile-link:hover,
+html.dark .tria-mobile-link.is-active {
+  color: #c4d0ff;
+  background: #1b2848;
+}
+
+html.dark .tria-icon-btn,
+html.dark .tria-bottom-nav {
+  color: #c4d0ff;
+  background: #131d35;
+  border-color: #283653;
+}
+
+html.dark .tria-bottom-link {
+  color: #a5b4d6;
+}
+
+html.dark .tria-bottom-link:hover,
+html.dark .tria-bottom-link.is-active {
+  color: #c4d0ff;
+}
+
+@media (max-width: 1023px) {
+  .tria-page {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tria-page *,
+  .tria-page *::before,
+  .tria-page *::after,
+  .tria-header *,
+  .tria-header *::before,
+  .tria-header *::after,
+  .tria-bottom-nav *,
+  .tria-bottom-nav *::before,
+  .tria-bottom-nav *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }

@@ -16,7 +16,7 @@ const BrandMark = ({ light = false }) => {
         <span className={light ? "text-white" : "tria-brand-name"}>TRIA</span>
         <span className={`mx-1 ${light ? "text-white/30" : "text-[#E3EAF8]"}`}>|</span>
         <span className={light ? "text-[#9DB4FF]" : "text-[#315CF5]"}>
-          Academy
+          Online
         </span>
       </span>
     </LinkScroll>

@@ -17,7 +17,6 @@ import {
   ArrowLeft,
   Sparkles,
 } from "lucide-react";
-import { Link as LinkScroll } from "react-scroll";
 import { categories, courses } from "./courses";
 
 const icons = {
@@ -149,11 +148,8 @@ const CourseCard = ({ course, onSelectCourse }) => {
               </span>
             </div>
 
-            <LinkScroll
-              to="enroll"
-              smooth
-              duration={800}
-              offset={-88}
+            <a
+              href="#enroll"
               onClick={() => onSelectCourse && onSelectCourse(course.id)}
               className="tria-btn tria-btn-primary w-full cursor-pointer text-sm"
             >
@@ -163,7 +159,7 @@ const CourseCard = ({ course, onSelectCourse }) => {
                 aria-hidden="true"
                 className="transition-transform duration-300 group-hover:-translate-x-1"
               />
-            </LinkScroll>
+            </a>
           </div>
         </div>
       </div>
@@ -171,7 +167,7 @@ const CourseCard = ({ course, onSelectCourse }) => {
   );
 };
 
-const Services = ({ activeCategory, onSelectCourse }) => {
+const Services = ({ activeCategory, onSelectCategory, onSelectCourse }) => {
   const [active, setActive] = useState(categories[0].id);
 
   useEffect(() => {
@@ -182,6 +178,11 @@ const Services = ({ activeCategory, onSelectCourse }) => {
 
   const current = categories.find((c) => c.id === active) || categories[0];
   const list = courses.filter((c) => c.category === active);
+
+  const selectCategory = (categoryId) => {
+    setActive(categoryId);
+    onSelectCategory?.(categoryId);
+  };
 
   return (
     <section id="services" className="tria-section tria-surface relative overflow-hidden">
@@ -214,7 +215,8 @@ const Services = ({ activeCategory, onSelectCourse }) => {
                 id={`tab-${c.id}`}
                 aria-selected={selected}
                 aria-controls="courses-panel"
-                onClick={() => setActive(c.id)}
+                type="button"
+                onClick={() => selectCategory(c.id)}
                 className={`relative shrink-0 rounded-full border px-5 py-2.5 text-start transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#315CF5] ${
                   selected
                     ? "border-transparent text-white"

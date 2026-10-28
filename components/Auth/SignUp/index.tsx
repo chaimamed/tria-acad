@@ -2,80 +2,102 @@
 
 import Link from "next/link";
 import SocialSignUp from "../SocialSignUp";
-import Logo from "@/app/components/Layout/Header/Logo";
 
 const SignUp = () => {
-  
   return (
-    <>
-      <div className='mb-10 text-center mx-auto inline-block'>
-        <Logo />
-      </div>
+    <main className="tria-auth">
+      <section className="tria-auth__card" aria-labelledby="signup-title">
+        <aside className="tria-auth__aside">
+          <a className="tria-auth__brand" href="/" aria-label="TRIA Online home">
+            <img src="/assets/Logo.svg" alt="" />
+            <span>TRIA Online</span>
+          </a>
+          <div className="tria-auth__aside-copy">
+            <span className="tria-auth__eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+            <h1>Make room for what you can become.</h1>
+            <p>
+              Build new skills, learn at your own pace, and take your next step
+              with TRIA Online.
+            </p>
+          </div>
+          <div className="tria-auth__aside-note">
+            <span className="tria-auth__note-mark" aria-hidden="true">
+              +
+            </span>
+            <span>Learn something new. Move forward with confidence.</span>
+          </div>
+        </aside>
 
-      <SocialSignUp />
+        <div className="tria-auth__content">
+          <div className="tria-auth__heading">
+            <span className="tria-auth__eyebrow">GET STARTED FOR FREE</span>
+            <h2 id="signup-title">Create your account</h2>
+            <p>Join our learning community in just a few steps.</p>
+          </div>
 
-      <span className="z-1 relative my-8 block text-center before:content-[''] before:absolute before:h-px before:w-[40%] before:bg-black/20 before:bg-opacity-60 before:left-0 before:top-3 after:content-[''] after:absolute after:h-px after:w-[40%] after:bg-black/20 after:bg-opacity-60 after:top-3 after:right-0">
-        <span className='text-body-secondary relative z-10 inline-block px-3 text-base text-black'>
-          OR
-        </span>
-      </span>
+          <SocialSignUp />
 
-      <form>
-        <div className='mb-[22px]'>
-          <input
-            type='text'
-            placeholder='Name'
-            name='name'
-            required
-            className='w-full rounded-md border border-solid bg-transparent px-5 py-3 text-base text-dark outline-hidden transition border-gray-200 placeholder:text-black/30 focus:border-primary focus-visible:shadow-none text-black'
-          />
+          <div className="tria-auth__divider" aria-hidden="true">
+            <span>or sign up with email</span>
+          </div>
+
+          <form className="tria-auth__form" method="post">
+            <div className="tria-auth__field">
+              <label htmlFor="signup-name">Full name</label>
+              <input
+                autoComplete="name"
+                id="signup-name"
+                name="name"
+                placeholder="Your name"
+                required
+                type="text"
+              />
+            </div>
+            <div className="tria-auth__field">
+              <label htmlFor="signup-email">Email address</label>
+              <input
+                autoComplete="email"
+                id="signup-email"
+                name="email"
+                placeholder="you@example.com"
+                required
+                type="email"
+              />
+            </div>
+            <div className="tria-auth__field">
+              <label htmlFor="signup-password">Password</label>
+              <input
+                autoComplete="new-password"
+                id="signup-password"
+                name="password"
+                minLength={8}
+                placeholder="At least 8 characters"
+                required
+                type="password"
+              />
+              <span className="tria-auth__hint">
+                Use at least 8 characters for a stronger password.
+              </span>
+            </div>
+
+            <button className="tria-auth__submit" type="submit">
+              Create account
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+
+          <p className="tria-auth__legal">
+            By creating an account, you agree to our{" "}
+            <Link href="/">Privacy</Link> and <Link href="/">Policy</Link>.
+          </p>
+
+          <p className="tria-auth__signin">
+            Already have an account? <Link href="/">Sign in</Link>
+          </p>
         </div>
-        <div className='mb-[22px]'>
-          <input
-            type='email'
-            placeholder='Email'
-            name='email'
-            required
-            className='w-full rounded-md border border-solid bg-transparent px-5 py-3 text-base text-dark outline-hidden transition border-gray-200 placeholder:text-black/30 focus:border-primary focus-visible:shadow-none text-black'
-          />
-        </div>
-        <div className='mb-[22px]'>
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            required
-            className='w-full rounded-md border border-solid bg-transparent px-5 py-3 text-base text-dark outline-hidden transition border-gray-200 placeholder:text-black/30 focus:border-primary focus-visible:shadow-none text-black'
-          />
-        </div>
-        <div className='mb-9'>
-          <button
-            type='submit'
-            className='flex w-full items-center text-18 font-medium text-white justify-center rounded-md bg-primary px-5 py-3 text-darkmode transition duration-300 ease-in-out hover:bg-transparent hover:text-primary border-primary border hover:cursor-pointer'>
-            Sign Up 
-          </button>
-        </div>
-      </form>
-
-      <p className='text-body-secondary mb-4 text-black/60 text-base'>
-        By creating an account you are agree with our{' '}
-        <a href='/' className='text-primary hover:underline'>
-          Privacy
-        </a>{' '}
-        and{' '}
-        <a href='/' className='text-primary hover:underline'>
-          Policy
-        </a>
-      </p>
-
-      <p className='text-body-secondary text-black/60 text-base'>
-        Already have an account?
-        <Link href='/' className='pl-2 text-primary hover:underline'>
-          Sign In
-        </Link>
-      </p>
-    </>
-  )
+      </section>
+    </main>
+  );
 };
 
 export default SignUp;

@@ -24,7 +24,7 @@ const desktopLinks = [
     icon: HiOutlineDesktopComputer,
   },
   {
-    id: "about-academy",
+    id: "about-Online",
     label: "عن الأكاديمية",
     icon: HiOutlineAcademicCap,
   },
@@ -316,7 +316,7 @@ const Header = () => {
               icon: HiOutlineDesktopComputer,
             },
             {
-              id: "about-academy",
+              id: "about-Online",
               label: "الأكاديمية",
               icon: HiOutlineAcademicCap,
             },

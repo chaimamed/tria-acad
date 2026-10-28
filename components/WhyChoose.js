@@ -9,8 +9,6 @@ import {
   ArrowLeft,
   ShieldCheck,
 } from "lucide-react";
-import { Link as LinkScroll } from "react-scroll";
-
 const ROTATE_MS = 5000;
 
 const items = [
@@ -218,16 +216,13 @@ const WhyChoose = () => {
                 </ul>
 
                 <div className="mt-auto flex flex-wrap items-center justify-between gap-4">
-                  <LinkScroll
-                    to="services"
-                    smooth
-                    duration={800}
-                    offset={-88}
+                  <a
+                    href="#services"
                     className="tria-btn cursor-pointer bg-white px-6 text-[#14285C] hover:bg-[#F2F6FF]"
                   >
                     تصفّح الدورات
                     <ArrowLeft size={18} aria-hidden="true" />
-                  </LinkScroll>
+                  </a>
 
                   {/* dots */}
                   <div className="flex items-center gap-2" aria-hidden="true">

@@ -13,7 +13,7 @@ const values = [
 
 const About = () => {
   return (
-    <section id="about-academy" className="tria-section tria-surface">
+    <section id="about-Online" className="tria-section tria-surface">
       <div className="mx-auto grid max-w-screen-xl items-center gap-12 px-6 sm:px-8 lg:grid-cols-2 lg:px-16">
         {/* Video (9:14). In RTL this column sits on the right.
             Add "lg:order-2" to the wrapper below to move it to the left. */}

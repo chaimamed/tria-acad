@@ -22,16 +22,16 @@ const CONTACT = {
   email: "", // e.g. "contact@tria.dz"
   phone: "", // e.g. "+213 5xx xx xx xx"
   location: "الجزائر", // e.g. "الجزائر"
-  facebook: "", // full URL
-  instagram: "", // full URL
-  youtube: "", // full URL
+  facebook: "https://www.facebook.com/share/19eMis3ebS/",
+  instagram: "https://www.instagram.com/tria.academy_online?exln=MWM2aXl4M3hlNG1ibQ==",
+  youtube: "https://www.youtube.com/@Tria-dev",
 };
 
 const navLinks = [
   { to: "about", label: "الرئيسية" },
   { to: "services", label: "الدورات" },
   { to: "digital", label: "المهارات الرقمية" },
-  { to: "about-academy", label: "من نحن" },
+  { to: "about-Online", label: "من نحن" },
   { to: "enroll", label: "التسجيل في دورة" },
 ];
 
@@ -48,44 +48,54 @@ const socials = [
 ].filter((s) => CONTACT[s.key]);
 
 const linkClass =
-  "group inline-flex cursor-pointer items-center gap-1.5 text-white/75 transition hover:text-white";
+  "group inline-flex cursor-pointer items-center gap-1.5 text-sm text-white/75 transition duration-200 hover:text-white";
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-[#101D49] pb-28 pt-16 text-white lg:pb-10">
-      {/* decorative glows */}
-      <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-[#315CF5] opacity-20 blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 bottom-10 h-64 w-64 rounded-full bg-[#8050F6] opacity-20 blur-3xl" />
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#07162f] pb-12 pt-16 text-white lg:pb-8">
+      <div className="pointer-events-none absolute inset-0 opacity-90">
+        <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#315CF5]/20 blur-3xl" />
+        <div className="absolute -right-16 top-20 h-72 w-72 rounded-full bg-[#8050F6]/20 blur-3xl" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#081326] to-transparent" />
+      </div>
 
-      <div className="relative mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16">
-        {/* ---------- CTA band ---------- */}
-        <div className="mb-14 flex flex-col items-center justify-between gap-5 rounded-[1.75rem] border border-white/10 bg-gradient-to-l from-[#315CF5]/30 via-[#8050F6]/20 to-white/5 px-6 py-8 text-center sm:px-10 md:flex-row md:text-start">
-          <div>
-            <h3 className="mb-1 text-xl font-extrabold sm:text-2xl">
-              ابدأ رحلتك التعليمية اليوم
-            </h3>
-            <p className="text-sm text-white/75">
-              اختر الدورة المناسبة وسجّل في دقيقة واحدة.
-            </p>
+      <div className="relative mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-14">
+        <div className="mb-14 rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(49,92,245,0.2),rgba(128,80,246,0.16),rgba(255,255,255,0.04))] p-5 shadow-[0_24px_80px_rgba(15,23,42,0.45)] sm:p-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-xl">
+              <h3 className="text-2xl font-black text-white sm:text-3xl">
+                ابدأ رحلتك التعليمية اليوم
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/75 sm:text-base">
+                اختَر المسار المناسب لك وابدأ بتعلّم عملي، واضح، ومصمم ليناسب
+                أهدافك في التعليم والمهارات الرقمية.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+              <a
+                href="#services"
+                className="tria-footer-browse tria-btn inline-flex items-center justify-center rounded-full px-6 text-sm font-bold"
+              >
+                تصفح الدورات
+              </a>
+              <a
+                href="#enroll"
+                className="tria-btn inline-flex items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-[#14285C] shadow-[0_12px_30px_rgba(255,255,255,0.25)] transition hover:bg-[#f4f7ff]"
+              >
+                سجّل في دورة
+                <ArrowLeft size={18} aria-hidden="true" />
+              </a>
+            </div>
           </div>
-          <LinkScroll
-            to="enroll"
-            smooth
-            duration={800}
-            offset={-88}
-            className="tria-btn shrink-0 cursor-pointer bg-white px-7 text-[#14285C] hover:bg-[#F2F6FF]"
-          >
-            سجّل في دورة
-            <ArrowLeft size={18} aria-hidden="true" />
-          </LinkScroll>
         </div>
 
-        {/* ---------- columns ---------- */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
-          {/* brand */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1.2fr]">
           <div>
-            <BrandMark light />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
+            <div className="mb-5">
+              <BrandMark light />
+            </div>
+            <p className="max-w-xs text-sm leading-relaxed text-white/70">
               TRIA منصة تعليمية أونلاين للدعم المدرسي واللغات والمهارات الرقمية،
               بدروس مباشرة ومتابعة واضحة.
             </p>
@@ -95,9 +105,9 @@ const Footer = () => {
                 return (
                   <li
                     key={p.text}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/85"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-white/85"
                   >
-                    <Icon size={14} aria-hidden="true" />
+                    <Icon size={13} aria-hidden="true" className="text-[#a7bbff]" />
                     {p.text}
                   </li>
                 );
@@ -105,13 +115,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* navigation */}
           <nav aria-label="التنقّل">
-            <p className="mb-5 text-lg font-bold">التنقّل</p>
-            <ul className="space-y-3 text-sm">
+            <p className="mb-5 text-lg font-bold text-white">التنقّل</p>
+            <ul className="space-y-3">
               {navLinks.map((l) => (
                 <li key={l.to}>
-                  <LinkScroll to={l.to} smooth duration={800} offset={-88} className={linkClass}>
+                  <LinkScroll
+                    to={l.to}
+                    smooth
+                    duration={800}
+                    offset={-88}
+                    className={linkClass}
+                  >
                     <ChevronLeft
                       size={14}
                       aria-hidden="true"
@@ -124,13 +139,18 @@ const Footer = () => {
             </ul>
           </nav>
 
-          {/* categories */}
           <div>
-            <p className="mb-5 text-lg font-bold">مجالات الدورات</p>
-            <ul className="space-y-3 text-sm">
+            <p className="mb-5 text-lg font-bold text-white">مجالات الدورات</p>
+            <ul className="space-y-3">
               {categories.map((c) => (
                 <li key={c.id}>
-                  <LinkScroll to="services" smooth duration={800} offset={-88} className={linkClass}>
+                  <LinkScroll
+                    to="services"
+                    smooth
+                    duration={800}
+                    offset={-88}
+                    className={linkClass}
+                  >
                     <ChevronLeft
                       size={14}
                       aria-hidden="true"
@@ -143,9 +163,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* contact */}
           <div>
-            <p className="mb-5 text-lg font-bold">تواصل معنا</p>
+            <p className="mb-5 text-lg font-bold text-white">تواصل معنا</p>
             <ul className="space-y-3 text-sm text-white/80">
               {CONTACT.email ? (
                 <li>
@@ -191,7 +210,7 @@ const Footer = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={s.label}
-                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 transition hover:-translate-y-0.5 hover:bg-[#315CF5] hover:text-white"
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition duration-200 hover:-translate-y-0.5 hover:bg-[#315CF5] hover:text-white"
                       >
                         <Icon size={18} aria-hidden="true" />
                       </a>
@@ -203,7 +222,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ---------- bottom bar ---------- */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-white/55 sm:flex-row">
           <p>©{new Date().getFullYear()} TRIA. جميع الحقوق محفوظة.</p>
           <LinkScroll
@@ -211,7 +229,7 @@ const Footer = () => {
             smooth
             duration={800}
             offset={-90}
-            className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-white/80 transition hover:bg-white/10 hover:text-white"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-white/80 transition hover:bg-white/10 hover:text-white"
           >
             <ArrowUp size={16} aria-hidden="true" />
             العودة للأعلى

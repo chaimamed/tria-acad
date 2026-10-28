@@ -11,7 +11,49 @@ import FinalCta from "../components/FinalCta";
 import Enroll from "../components/Enroll";
 import Layout from "../components/Layout/Layout";
 import SeoHead from "../components/SeoHead";
-import Head from "next/head";
+
+const siteUrl = "https://tria-Online.dz";
+const siteDescription =
+  "دروس دعم مدرسي أونلاين في الجزائر، تعلّم اللغات والبرمجة والمهارات الرقمية مع أكاديمية TRIA.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": `${siteUrl}/#organization`,
+      name: "أكاديمية TRIA",
+      alternateName: "TRIA Online",
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/assets/Logo.svg`,
+      },
+      description: siteDescription,
+      areaServed: {
+        "@type": "Country",
+        name: "الجزائر",
+      },
+      knowsAbout: [
+        "الدعم المدرسي",
+        "الرياضيات",
+        "اللغات",
+        "البرمجة",
+        "المهارات الرقمية",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "أكاديمية TRIA",
+      inLanguage: "ar-DZ",
+      publisher: {
+        "@id": `${siteUrl}/#organization`,
+      },
+    },
+  ],
+};
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -19,23 +61,11 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>أكاديمية TRIA | دروس الدعم والمهارات الرقمية</title>
-        <meta
-          name="description"
-          content="اكتشف دروس الدعم أونلاين، وتعلّم البرمجة واللغات والمهارات الرقمية مع أكاديمية TRIA."
-        />
-        <meta
-          name="keywords"
-          content="أكاديمية TRIA, دروس أونلاين, دعم مدرسي, برمجة, مهارات رقمية, الجزائر"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="TRIA Academy" />
-      </Head>
-
       <SeoHead
-        title="أكاديمية TRIA | دروس الدعم والمهارات الرقمية"
-        description="اكتشف دروس الدعم أونلاين، وتعلّم البرمجة واللغات والمهارات الرقمية مع أكاديمية TRIA."
+        title="أكاديمية TRIA | دروس دعم وبرامج تعليمية أونلاين"
+        description={siteDescription}
+        keywords="أكاديمية TRIA, دروس دعم مدرسي الجزائر, دروس أونلاين, دعم مدرسي, تعلم البرمجة, تعلم اللغات, مهارات رقمية"
+        structuredData={structuredData}
       />
 
       <Layout>
@@ -43,11 +73,12 @@ export default function Home() {
         
         <Services
           activeCategory={activeCategory}
+          onSelectCategory={setActiveCategory}
           onSelectCourse={setSelectedCourseId}
         />
         <WhyChoose />
     
-        <DigitalSkills />
+        <DigitalSkills onSelectCategory={setActiveCategory} />
         <About />
         <Values />
         <FinalCta />

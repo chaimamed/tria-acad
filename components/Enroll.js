@@ -93,7 +93,8 @@ const Enroll = ({ selectedCourseId = "" }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="tria-card p-6 sm:p-8"
+          className="tria-card tria-enroll-form p-6 sm:p-8"
+          dir="rtl"
         >
           <div className="mb-5">
             <label className="tria-label" htmlFor="fullName">الاسم الكامل</label>
@@ -118,6 +119,7 @@ const Enroll = ({ selectedCourseId = "" }) => {
                 value={form.email}
                 onChange={onChange}
                 placeholder="you@email.com"
+                dir="ltr"
                 required
               />
             </div>
@@ -131,6 +133,7 @@ const Enroll = ({ selectedCourseId = "" }) => {
                 value={form.phone}
                 onChange={onChange}
                 placeholder="+213..."
+                dir="ltr"
               />
             </div>
           </div>

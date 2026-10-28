@@ -1,5 +1,4 @@
 import React from "react";
-import { Link as LinkScroll } from "react-scroll";
 import { Code2, Globe, FileSpreadsheet, Cpu, Monitor } from "lucide-react";
 
 const skills = [
@@ -10,7 +9,7 @@ const skills = [
   { icon: Cpu, label: "أساسيات الحاسوب" },
 ];
 
-const DigitalSkills = () => {
+const DigitalSkills = ({ onSelectCategory }) => {
   return (
     <section id="digital" className="tria-section">
       <div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16">
@@ -24,15 +23,13 @@ const DigitalSkills = () => {
                 اكتسب مهارات عملية في البرمجة وتطوير الويب والأدوات الرقمية،
                 وابنِ معارفك خطوة بخطوة.
               </p>
-              <LinkScroll
-                to="services"
-                smooth
-                duration={800}
-                offset={-88}
+              <a
+                href="#services"
+                onClick={() => onSelectCategory?.("digital")}
                 className="tria-btn tria-btn-primary cursor-pointer bg-[#315CF5]"
               >
                 اكتشف المهارات الرقمية
-              </LinkScroll>
+              </a>
             </div>
             <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {skills.map((skill) => {

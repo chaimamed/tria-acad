@@ -1,12 +1,11 @@
-import React from "react";
-import { signIn } from "next-auth/react";
-
 const SocialSignUp = () => {
   return (
-    <>
-      <div className='flex gap-4'>
-        <button className='flex w-full items-center justify-center gap-2.5 rounded-lg p-3.5 border border-gray-200 text-black hover:bg-neutral-100 hover:cursor-pointer'>
-          Sign Up
+    <div className="tria-auth__social">
+        <button
+          className="tria-auth__social-button"
+          type="button"
+        >
+          <span>Google</span>
           <svg
             width='23'
             height='22'
@@ -44,8 +43,11 @@ const SocialSignUp = () => {
           </svg>
         </button>
 
-        <button className='flex w-full items-center justify-center gap-2.5 rounded-lg p-3.5 border border-gray-200 text-black hover:bg-neutral-100 hover:cursor-pointer'>
-          Sign Up
+        <button
+          className="tria-auth__social-button"
+          type="button"
+        >
+          <span>GitHub</span>
           <svg
             width='22'
             height='22'
@@ -58,8 +60,7 @@ const SocialSignUp = () => {
             />
           </svg>
         </button>
-      </div>
-    </>
+    </div>
   )
 };
 

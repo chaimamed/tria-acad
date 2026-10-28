@@ -1,5 +1,4 @@
 import React from "react";
-import { Link as LinkScroll } from "react-scroll";
 import { motion } from "framer-motion";
 import { Sparkles, Video, BookOpen, Code2, ArrowLeft, PlayCircle } from "lucide-react";
 import { categories, courses } from "./courses";
@@ -50,9 +49,9 @@ const Hero = () => {
           </p>
 
           <h1 className="mb-5 text-4xl font-extrabold leading-[1.35] sm:text-5xl lg:text-[3.4rem]">
-            تعلّم اليوم،
+            دروس دعم مدرسي أونلاين،
             <br />
-            واصنع <span className="tria-gradient-text">مستقبلك</span> غداً
+            وتعلّم <span className="tria-gradient-text">المهارات الرقمية</span>
           </h1>
 
           <p className="mb-6 max-w-xl text-base sm:text-lg">
@@ -72,26 +71,20 @@ const Hero = () => {
           </div>
 
           <div className="mb-10 flex flex-wrap gap-3">
-            <LinkScroll
-              to="enroll"
-              smooth
-              duration={800}
-              offset={-88}
+            <a
+              href="#enroll"
               className="tria-btn tria-btn-primary cursor-pointer px-7"
             >
               سجّل في دورة
               <ArrowLeft size={18} aria-hidden="true" />
-            </LinkScroll>
-            <LinkScroll
-              to="services"
-              smooth
-              duration={800}
-              offset={-88}
+            </a>
+            <a
+              href="#services"
               className="tria-btn tria-btn-secondary cursor-pointer px-7"
             >
               <PlayCircle size={18} aria-hidden="true" />
               اكتشف الدورات
-            </LinkScroll>
+            </a>
           </div>
 
           <dl className="grid max-w-md grid-cols-3 gap-4 border-t border-[#E3EAF8] pt-6 dark:border-[#2a365c]">

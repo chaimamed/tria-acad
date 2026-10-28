@@ -1,5 +1,4 @@
 import React from "react";
-import { Link as LinkScroll } from "react-scroll";
 
 const FinalCta = () => {
   return (
@@ -14,24 +13,18 @@ const FinalCta = () => {
             وتطوير مهاراتك.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <LinkScroll
-              to="enroll"
-              smooth
-              duration={800}
-              offset={-88}
+            <a
+              href="#enroll"
               className="tria-btn cursor-pointer bg-white text-[#14285C] hover:bg-[#F2F6FF]"
             >
               ابدأ الآن
-            </LinkScroll>
-            <LinkScroll
-              to="services"
-              smooth
-              duration={800}
-              offset={-88}
+            </a>
+            <a
+              href="#services"
               className="tria-btn cursor-pointer border border-white/40 bg-transparent text-white hover:bg-white/10"
             >
               تصفّح الدورات
-            </LinkScroll>
+            </a>
           </div>
         </div>
       </div>
